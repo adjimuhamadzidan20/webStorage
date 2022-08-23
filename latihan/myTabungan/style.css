@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+	margin-top: 30px;
+	margin-bottom: 12px;
+}
+
+main .form-input {
+	border: 1px solid black;
+	width: 50%;
+	margin: auto;
+	padding: 30px 0;
+}
+
+main .tarik-input {
+	border: 1px solid black;
+	width: 50%;
+	margin: auto;
+	padding: 30px 0;
+	display: none;
+}
+
+main .riwayat-data table {
+	margin: 15px auto;
+	width: 100%;
+}
+
+main .riwayat-data table tr th {
+	border-bottom: 1px solid black;
+	width: 200px;
+}
+
+main .inputNominal, .inputNasabah {
+	width: 50%;
+	padding: 4px;
+	margin-top: 8px;
+	margin-bottom: 10px;
+}
+
+main .btn-simpan {
+	margin-top: 15px;
+	padding: 2px 8px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+main .saldo-nominal {
+	border: 1px solid black;
+	width: 50%;
+	margin: auto;
+	padding: 40px 0;
+	margin-top: 20px;
+}
+
+main .navigasi {
+	margin-bottom: 10px;
+}
+
+main .navigasi #tarik, #tabung {
+	padding: 2px 8px;
+	cursor: pointer;
+}
+
+h2 {
+	margin-bottom: 10px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web Storage World || Local Storage</title>
+	<style>
+		.contents {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border: 2px solid black;
+			padding: 15px;
+		}
+
+		#generateButton {
+		  	margin-top: 5px;
+		 	margin-bottom: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="contents" align="center">
+		<button id="incrementButton">Tambah nilai</button>
+		<button id="clear">Hapus storage</button>
+		<h3>Kamu sudah menekan tombol di atas sebanyak:</h3>
+		<h2 id="count">0</h2>
+	</div>
+
+	<script type="text/javascript">
+		// membuat key localstorage
+		const localStorageKey = 'Nilai';
+
+		// mengecek apakah local storage tersedia atau tidak
+		if (typeof(Storage) !== 'undefined') {
+			if (localStorage.getItem(localStorageKey) === null) {
+				// jika belum ada local storage beri nilai awal 0
+				localStorage.setItem(localStorageKey, 0);
+			}
+
+			const increBtn = document.getElementById('incrementButton'); // btn tambah nilai
+			const clearBtn = document.getElementById('clear'); // btn hapus storage
+			const count = document.getElementById('count'); // nilai yang tampil
+
+			// memberi nilai dari local storage
+			count.innerText = localStorage.getItem(localStorageKey);
+
+			// menambah nilai storage ketika tambah nilai diklik
+			increBtn.addEventListener('click', function() {
+				let nilai = localStorage.getItem(localStorageKey);
+				nilai++;
+
+				localStorage.setItem(localStorageKey, nilai);
+				count.innerText = localStorage.getItem(localStorageKey);
+			})
+
+			// menghapus nilai & mereset ke nilai 0
+			clearBtn.addEventListener('click', function() {
+				localStorage.removeItem(localStorageKey);
+				count.innerText = 0;
+			})
+		}
+
+		else {
+			alert('Browser yang Anda gunakan tidak mendukung Web Storage');	
+		}
+
+	</script>
+</body>
+</html>
