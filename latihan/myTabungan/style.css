@@ -2,11 +2,23 @@
 	margin: 0;
 	padding: 0;
 	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	box-sizing: border-box;
 }
 
 header {
 	margin-top: 30px;
 	margin-bottom: 12px;
+	text-align: center;
+}
+
+header .navigasi {
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+header .navigasi #tarik, #tabung {
+	padding: 2px 8px;
+	cursor: pointer;
 }
 
 main .form-input {
@@ -14,6 +26,7 @@ main .form-input {
 	width: 50%;
 	margin: auto;
 	padding: 30px 0;
+	text-align: center;
 }
 
 main .tarik-input {
@@ -22,16 +35,11 @@ main .tarik-input {
 	margin: auto;
 	padding: 30px 0;
 	display: none;
+	text-align: center;
 }
 
-main .riwayat-data table {
-	margin: 15px auto;
-	width: 100%;
-}
-
-main .riwayat-data table tr th {
-	border-bottom: 1px solid black;
-	width: 200px;
+h2 {
+	margin-bottom: 10px;
 }
 
 main .inputNominal, .inputNasabah {
@@ -48,23 +56,29 @@ main .btn-simpan {
 	text-transform: uppercase;
 }
 
+main .reset {
+	margin-top: 12px;
+	padding: 2px 8px;
+	cursor: pointer;
+	text-transform: uppercase;
+	/*display: none;*/
+}
+
 main .saldo-nominal {
 	border: 1px solid black;
 	width: 50%;
 	margin: auto;
-	padding: 40px 0;
+	padding: 40px 20px;
 	margin-top: 20px;
 }
 
-main .navigasi {
-	margin-bottom: 10px;
+main .saldo-nominal .isi-saldo {
+	display: flex;
+	justify-content: space-between;
 }
 
-main .navigasi #tarik, #tabung {
-	padding: 2px 8px;
-	cursor: pointer;
-}
-
-h2 {
-	margin-bottom: 10px;
+@media screen and (max-width: 700px) {
+	main .form-input, main .tarik-input, main .saldo-nominal {
+		width: 80%;
+	}
 }

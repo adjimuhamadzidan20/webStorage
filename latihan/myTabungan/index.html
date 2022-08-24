@@ -6,20 +6,19 @@
 	<title>My Tabungan</title>
 	<link rel="stylesheet" href="style.css">
 </head>
-<body align="center">
+<body>
 	<header>
 		<h1>My Tabungan</h1>
-	</header>
-	<main>
 		<!-- menu -->
 		<div class="navigasi">
 			<button type="button" id="tabung">SIMPAN TUNAI</button>
 			<button type="button" id="tarik">TARIK TUNAI</button>
 		</div>
+	</header>
+	<main>
 		<!-- form simpan -->
 		<div class="form-input">
 			<h2><b>Simpan Tunai</b></h2>
-			<input type="text" placeholder="Masukan Nama" id="nasabah" class="inputNasabah"><br>
 			<input type="text" placeholder="Masukan Nominal" id="nominal" class="inputNominal"><br>
 			<button type="submit" class="btn-simpan" id="simpan">Simpan Uang</button>
 		</div>
@@ -31,10 +30,11 @@
 		</div>
 		<!-- isi saldo -->
 		<div class="saldo-nominal">
-			<p><b>Nama Nasabah</b></p>
-			<p><span id="nama_nasabah"></span></p>
-			<p><b>Saldo Anda</b></p>
-			<p>Rp. <span id="jumlah_saldo">0</span></p>
+			<div class="isi-saldo">
+				<p><b>Saldo Anda :</b></p>
+				<p>Rp. <span id="jumlah_saldo">0</span></p>
+			</div>
+			<button type="submit" id="reset" class="reset">Reset Saldo</button>
 		</div>
 	</main>
 
