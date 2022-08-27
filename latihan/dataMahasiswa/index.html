@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Data Mahasiswa</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<h1>Data Mahasiswa</h1>
+		<p>Universitas Indraprasta PGRI</p>
+	</header>
+	<main>
+		<div class="container">
+			<div class="form-mhs">
+				<h2>Form Mahasiswa</h2>
+				<form class="input-data">
+					<label for="nama">Nama Mahasiswa</label><br>
+					<input type="text" placeholder="Nama Lengkap" id="nama" maxlength="4" required><br>
+					<label for="fakultas">Fakultas</label><br>
+					<select id="fakultas">
+						<option value="FIPPS">FIPPS</option>
+						<option value="FMIPA">FMIPA</option>
+						<option value="FTIK">FTIK</option>
+						<option value="FBS">FBS</option>
+					</select><br>
+					<label for="prodi">Prodi</label><br>
+					<select id="prodi">
+						<option value="Bimbingan & Konseling">Bimbingan & Konseling</option>
+						<option value="Pend. Ekonomi">Pend. Ekonomi</option>
+						<option value="Pend. Sejarah">Pend. Sejarah</option>
+						<option value="Pend. Matematika">Pend. Matematika</option>
+						<option value="Pend. Biologi">Pend. Biologi</option>
+						<option value="Pend. Fisika">Pend. Fisika</option>
+						<option value="Pend. B. Inggris">Pend. B. inggris</option>
+						<option value="Pend. B. Indonesia">Pend. B. Indonesia</option>
+						<option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
+						<option value="Informatika">Informatika</option>
+						<option value="Teknik Industri">Teknik Industri</option>
+						<option value="Arsitektur">Arsitektur</option>
+					</select>
+					<button type="submit" id="simpan">Submit Data</button>
+				</form>
+			</div>
+			<div class="table-mhs">
+				<table border="1" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Nama</th>
+							<th>Fakultas</th>
+							<th>Prodi</th>
+						</tr>
+					</thead>
+					<tbody id="list-mhs">
+					</tbody>
+				</table>
+				<button id="reset" type="submit">Reset Data</button>
+			</div>	
+		</div>
+	</main>
+
+	<script type="text/javascript">
+		const STORAGE = 'DATA_MHS';
+
+		// check storage
+		function storageCheck() {
+			return typeof(Storage) !== 'undefined';
+		}
+
+		// wadah menempatkan data mhs
+		function wadahDataMhs(data) {
+			if (storageCheck()) {
+				let wadahDataMhs = [];
+
+				if (localStorage.getItem(STORAGE) !== null) {
+					wadahDataMhs = JSON.parse(localStorage.getItem(STORAGE));
+				}
+
+				wadahDataMhs.unshift(data);
+				if (wadahDataMhs.length > 10) {
+					wadahDataMhs.pop();
+				}
+
+				console.log(localStorage.setItem(STORAGE, JSON.stringify(wadahDataMhs)));
+			}
+		}
+
+		// ambil data
+		function ambilDataMhs() {
+			if (storageCheck()) {
+				return JSON.parse(localStorage.getItem(STORAGE));
+			} else {
+				return [];
+			}
+		}
+
+		// menampilkan data
+		function tampilDataMhs() {
+			let dataMahasiswa = ambilDataMhs();
+			let listData = document.getElementById('list-mhs');
+
+			listData.innerHTML = '';
+			for (data of dataMahasiswa) {
+				let baris = document.createElement('tr');
+				baris.innerHTML = '<td>' + data.namaMhs + '</td>';
+				baris.innerHTML += '<td>' + data.fakultas + '</td>';
+				baris.innerHTML += '<td>' + data.prodi + '</td>';
+
+				listData.appendChild(baris);
+			}
+		}
+
+		// submit data
+		let form = document.querySelector('.input-data');
+		form.addEventListener('submit', function(e) {
+			let namaMhs = document.getElementById('nama').value;
+			let fakultas = document.getElementById('fakultas').value;
+			let prodi = document.getElementById('prodi').value;
+
+			// data object 
+			const dataMhs = {
+				namaMhs : namaMhs,
+				fakultas : fakultas,
+				prodi : prodi
+			}
+
+			wadahDataMhs(dataMhs);
+			ambilDataMhs();
+			tampilDataMhs();
+			e.preventDefault();
+		})
+
+		// load halaman
+		window.addEventListener('load', function() {
+			if (storageCheck()) {
+				if (localStorage.getItem(STORAGE) !== null) {
+					tampilDataMhs();
+				}
+			} else {
+				console.log('Web browser tidak support web storage');
+			}
+		})
+
+		// reset
+		let resetBtn = document.getElementById('reset');
+		resetBtn.addEventListener('click', function() {
+			if (localStorage.getItem(STORAGE) === null) {
+				alert('Belum ada data sama sekali');
+			} else {
+				let konfir = confirm('Anda yakin ingin reset? data akan terhapus semua');
+				if (konfir == true) {
+					localStorage.removeItem(STORAGE);
+					location.reload();
+					alert('Data berhasil direset');
+				}
+			}
+		})
+		
+	</script>
+</body>
+</html>
