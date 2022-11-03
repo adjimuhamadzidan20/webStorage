@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="adjimuhamadzidan">
 	<title>My Tabungan</title>
 	<link rel="stylesheet" href="style.css">
 </head>
@@ -31,13 +32,15 @@
 		<!-- isi saldo -->
 		<div class="saldo-nominal">
 			<div class="isi-saldo">
-				<p><b>Saldo Anda :</b></p>
-				<p>Rp. <span id="jumlah_saldo">0</span></p>
+				<p class="keterangan"><b>Saldo Anda :</b></p>
+				<p><b>Rp. <span id="jumlah_saldo">0</span></b></p>
 			</div>
-			<button type="submit" id="reset" class="reset">Reset Saldo</button>
+			<div class="reset-btn">
+				<button type="submit" id="reset" class="reset">Reset Saldo</button>
+			</div>
 		</div>
 	</main>
-
+	
 	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
