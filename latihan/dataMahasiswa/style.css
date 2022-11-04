@@ -2,62 +2,118 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	box-sizing: border-box;
 }
 
 header {
-	margin-bottom: 40px;
+	margin-bottom: 37px;
 	text-align: center;
 	margin-top: 35px;
-}
-
-.container {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 }
 
-.form-mhs, .table-mhs {
+header h1 {
+	/*margin-bottom: 8px;*/
+}
+
+header .head-title {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	margin-left: 10px;
+}
+
+main .container {
+	display: flex;
+	justify-content: center;
+}
+
+main .form-mhs, .table-mhs {
 	width: 35%;
-	background-color: skyblue;
-	padding: 20px 30px;
+	background-color: #25CCF7;
+	padding: 40px 35px;
+	margin: 0 12px;
+	border-radius: 5px;
 }
 
-h2 {
+main .form-mhs {
+	color: white;
+}
+
+main .form-mhs h2 {
 	margin-bottom: 25px;
 	text-align: center;
 }
 
+label {
+	font-weight: bold;
+}
+
 input, select {
 	width: 100%;
-	padding: 5px;
-	margin-bottom: 12px;
+	padding: 10px;
+	margin-top: 4px;
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 button {
-	padding: 5px;
+	padding: 10px;
 	width: 100%;
 	margin-top: 10px;
 	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: white;
+	transition: 0.1s;
+	font-weight: bold;
+}
+
+button:hover {
+	background-color: #182C61;
+	color: white;
 }
 
 table {
 	width: 100%;
 	background-color: white;
 	text-align: center;
+	border-radius: 5px;
+	margin-bottom: 6px;
 }
 
 table tr th, td {
-	padding: 2px;
+	padding: 4px;
 }
 
-@media screen and (max-width: 800px) {
-	.container {
+/*responsive mobile*/
+@media screen and (max-width: 1000px) {
+	main .container {
 		display: block;
-		margin-bottom: 80px;
+		margin: 0 0;
+		margin-bottom: 100px;
 	}
 
-	.form-mhs, .table-mhs {
-		margin: 15px auto;
+	main .form-mhs, .table-mhs {
+		margin: auto;
 		width: 88%;
+	}
+
+	main .table-mhs {
+		margin-top: 34px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	header {
+		display: block;
+	}
+
+	header .head-title {
+		margin-left: 0;
 	}
 }
