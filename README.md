@@ -1,7 +1,6 @@
 # webStorage
 belajar web storage
 
-latihan :
 myTabungan
 https://mytabungan.netlify.app
 
