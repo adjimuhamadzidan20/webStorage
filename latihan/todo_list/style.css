@@ -1,0 +1,119 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	box-sizing: border-box;
+}
+
+header { 
+	background-color: deepskyblue;
+	padding: 40px 60px;
+	color: white;
+}
+
+main {
+	/*color: white;*/
+	font-weight: bold;
+	margin-bottom: 100px;
+}
+
+.container-form {
+	padding: 30px;
+	box-shadow: 5px 5px 8px lightgrey;
+	/*border: 1px solid grey;*/
+	width: 50%;
+	margin: 18px auto;
+	border-radius: 4px;
+	color: #2d3436;
+}
+
+.container-list {
+	width: 50%;
+	margin: auto;
+	color: #2d3436;
+}
+
+#listTodo #ket-kosong {
+	text-align: center;
+	font-weight: lighter;
+	font-size: 11px;
+	text-transform: capitalize;
+}
+
+#listTodo li {
+	padding: 12px 30px;
+	box-shadow: 5px 5px 8px lightgrey;
+	/*border: 1px solid grey;*/
+	margin: 10px auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#todo_text {
+	width: 300px;
+	height: 36px;
+	padding: 6px 5px;
+	margin-top: 8px;
+	margin-right: 10px;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #2d3436;
+}
+
+button {
+	padding: 8px 10px;
+	height: 36px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	background-color: deepskyblue;
+	color: white;
+	font-weight: bold;
+}
+
+button:hover {
+	background-color: #00A3DA;
+}
+
+.ket {
+	color: black;
+	font-size: 10px;
+	margin-top: 6px;
+	font-weight: lighter;
+}
+
+.coret {
+	text-decoration: line-through;
+	cursor: pointer;
+}
+
+/*responsive mobile*/
+@media screen and (max-width: 800px) {
+	.container-form, 
+	.container-list {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 560px) {
+	header {
+		text-align: center;
+	}
+
+	.kolom-input {
+		display: block;
+	}
+
+	#todo_text {
+		width: 100%;
+	}
+
+	.add-list {
+		margin-top: 12px;
+		width: 100%;
+	}
+}

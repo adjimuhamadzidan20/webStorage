@@ -3,110 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="fontawesome/css/all.min.css">
 	<title>Todo List</title>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			list-style-type: none;
-		}
-
-		header {
-			background-color: deepskyblue;
-			padding: 40px 20px;
-			color: white;
-		}
-
-		main {
-			padding: 20px;
-		}
-
-		input, button {
-			padding: 3px 5px;
-		}
-
-		.coret {
-			text-decoration: line-through;
-			cursor: pointer;
-		}
-	</style>
 </head>
 <body>
 	<header>
-		<h1>Welcome in Todo List</h1>
+		<h1>To do List <i class="fa-regular fa-pen-to-square fa-sm"></i></h1>
+		<p>Sudahkah membuat list hari ini?</p>
 	</header>
 	<main>
-		<div class="container">
-			<form action="#">
+		<div class="container-form">
+			<form name="formTodo">
 				<label for="todo_text">Tuliskan Sesuatu</label><br>
-				<input type="text" id="todo_text" placeholder="Tulis sesuatu">
-				<button type="submit" id="add">Add</button>		
+				<div class="kolom-input">
+					<input type="text" id="todo_text" placeholder="Tulis sesuatu" name="list">
+					<button type="submit" id="add" class="add-list">Add List <i class="fa-solid fa-plus"></i></button>
+				</div>		
 			</form>
+			<p class="ket">*Sorot & Klik nama list untuk mencoretnya</p>
 		</div>
-		<div class="todo">
+		<div class="container-list">
 			<ul id="listTodo"></ul>
 		</div>
 	</main>
 
-	<script type="text/javascript">
-		// === js biasa ===
-		const todo = document.getElementById('listTodo');
-
-		const addBtn = document.getElementById('add');
-		addBtn.onclick = function() {
-			let inputTxt = document.getElementById('todo_text');
-			let todoNew = "	<li>" +
-								"<span onclick='coret(this);' style='cursor: pointer;'>"+ inputTxt.value + "</span>" +
-								"<span onclick='hapus(this);' style='cursor: pointer;'>[ X ]</span>" + 
-							"</li>";
-
-			todo.insertAdjacentHTML('afterbegin', todoNew);
-			syncLocalStorage('ADD', inputTxt.value);
-
-			// reset kolom input menjadi kosong
-			inputTxt.value = '';
-		}
-
-		// coret todolist
-		function coret(e) {
-			let status = e.classList.toggle('coret');
-			syncLocalStorage('UPDATE', e.innerText, status);
-		}		
-
-		// hapus todolist
-		function hapus(e) {
-			e.parentElement.remove();
-			syncLocalStorage('DELETE', e.previousElementSibling.innerText.trim());
-		}
-
-		// ===== local storage =====
-		let todoObjek = {};
-		const STORAGE = 'STORAGE_TODO';
-
-		if (typeof(Storage) !== 'undefined') {
-			console.log('web storage support');
-		} else {
-			console.log('web storage not support');
-		}
-
-		function syncLocalStorage(activity, item, status = false) {
-			switch(activity) {
-				case 'ADD':
-				case 'UPDATE':
-					todoObjek[item] = status;
-					break;
-				case 'DELETE':
-					delete todoObjek[item];
-					break;
-				default:
-					break;
-			}
-
-			console.log(todoObjek);
-			localStorage.setItem(STORAGE, JSON.stringify(todoObjek));
-			return;
-		}
-
-	</script>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="fontawesome/js/all.min.js"></script>
 </body>
 </html>
